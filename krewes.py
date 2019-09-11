@@ -10,4 +10,4 @@ KREWES = {
 
 import random
 def select():
-    print(KREWES[random.choice(list(KREWES))][random.randint(0,4)])
+    print(random.choice(KREWES[random.choice(list(KREWES))]))
