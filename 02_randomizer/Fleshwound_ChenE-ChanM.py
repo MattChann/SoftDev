@@ -10,4 +10,11 @@ KREWES = {
 
 import random
 def select():
-    print(random.choice(KREWES[random.choice(list(KREWES))]))
+    print(random.choice(       # Randomly selects a member from the team
+        KREWES[                # Gets the member list from the chosen team
+            random.choice(     # Randomly selects a team from the list
+                list(KREWES)   # Creates a list of the teams(keys) in the KREWES dictionary
+                )
+            ]
+        )
+    )
