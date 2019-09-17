@@ -14,11 +14,30 @@ for line in file:
         occupationData[splitList[0]] = splitList[1]
 file.close()
 
+# Selects a random occupation using weights
 def select():
-	occupationList = list(occupationData)
-	percentageList = list()
-	for job in occupationList:
-		percentageList.append(occupationData[job])
+    occupationList = list(occupationData.keys())
+    percentageList = list(occupationData.values())
 
-	choice = random.choices(occupationList,percentageList)
-	print(choice)
+    choice = random.choices(occupationList,percentageList)[0]
+    return choice
+
+# Testing for select() and generated percentages
+def test(amountOfTests):
+    testData = dict()
+    occupationList = list(occupationData.keys())
+    for job in occupationList:
+        testData[job] = 0
+
+    for i in range(amountOfTests):
+        testData[select()] += 1
+    
+    for job in occupationList:
+        testData[job] = (testData[job] / amountOfTests) * 100
+
+    print("Occupations                                       Percentage   Tested Percentage ")
+    print("=================================================|============|==================")
+    for occupation,percentage in occupationData.items():
+        print(f'{occupation:49}:{percentage:5}' + '       : ' + str(testData[occupation]))
+
+# test(998000)
