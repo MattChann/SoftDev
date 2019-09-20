@@ -1,2 +1,2 @@
 # SoftDev
-work for Software Development class
+Workshop for Stuyvesant Software Development Course MKS21QJI
