@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+    </head>
+    <body>
+        <table>
+            {% for occ in dict %}
+                <tr>
+                    <td>{{occ}}</td>
+                    <td>{{dict[occ]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
