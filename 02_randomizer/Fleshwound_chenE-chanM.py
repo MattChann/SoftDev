@@ -1,3 +1,9 @@
+# Matthew Chan
+# SoftDev1 pd2
+# K#02: NO-body expects the Spanish Inquisition
+# 2019-9-10
+
+
 #Write a program to print the name of a randomly-selected student from team (orpheus, rex, or endymion)
 
 KREWES = {

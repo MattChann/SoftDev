@@ -1,3 +1,8 @@
+# Matthew Chan
+# SoftDev1 pd2
+# K#02: NO-body expects the Spanish Inquisition
+# 2019-9-16
+
 import random
 
 # Reading the file's data

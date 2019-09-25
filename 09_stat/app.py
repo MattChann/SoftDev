@@ -1,3 +1,9 @@
+# Team "Space Tigers"
+# Matthew Chan & Jacob Olin
+# SoftDev1 pd2
+# K#09: ’Tis Not a Race -- But You Will Go Faster
+# 2019-09-19
+
 from flask import Flask, render_template
 app = Flask(__name__)
 
