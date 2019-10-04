@@ -1,0 +1,18 @@
+{% extends "template.html"%}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block content %}
+Error:
+{% set msgs = get_flashed_messages() %}
+{% for msg in msgs %}
+  {{ msg }}
+{% endfor %}
+<br>
+Please try again <br>
+<form action="/logout">
+	<input type="submit" name="sub" value="Return to Login">
+</form>
+{% endblock %}
