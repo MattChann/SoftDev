@@ -11,27 +11,25 @@ from flask import url_for
 from flask import session
 from flask import flash
 import os
-# imported Flask, render_template, and request
-app = Flask(__name__)
-#create instance of class Flask
 
+app = Flask(__name__)   #create instance of class Flask
+
+# hardcoded username and password
 usr = "apples"
 pwd = "bananas"
-# hardcode username and password
-app.secret_key = os.urandom(32)
+
 # set secret key to randomly generated string
+app.secret_key = os.urandom(32)
 
 @app.route("/")
 def root():
     #print(url_for("login"))
     if ("loggedIn" in session):
-        # if user is logged in
+        # if user is logged in redirect to welcome page
         return redirect(url_for("welcome"))
-        # redirect to welcome page
     else:
-        # else
+        # else redirect to login page
         return redirect(url_for("login"))
-        # redirect to login page
 
 @app.route("/auth")
 def authenticate():
@@ -43,17 +41,16 @@ def authenticate():
             return redirect(url_for("welcome"))
             # redirect to welcome page
         else:
-            # if password is incorrect
-            flash("incorrect password")
-            return render_template("error.html")
-            # render error page and flash error message
+            # if password is incorrect render error page and flash error message
+            flash("Error: incorrect password")
+            return render_template("login.html")
     else:
-        # if username is incorrect
-        flash("incorrect username")
-        return render_template("error.html")
-        # render error page and flash error message
-    return render_template("error.html", rsn = "bad juju")
-    #if it fails for any othe reason, return error page and error message
+        # if username is incorrect render error page and flash error message
+        flash("Error: incorrect username")
+        return render_template("login.html")
+    #if it fails for any other reason, return error page and error message
+    flash("Error: bad juju")
+    return render_template("login.html")
 
 @app.route("/welcome")
 def welcome():
@@ -66,15 +63,14 @@ def welcome():
 
 @app.route("/login")
 def login():
-    return render_template("template.html")
+    return render_template("login.html")
     # render template
 
 @app.route("/logout")
 def logout():
     if ("loggedIn" in session):
-    # if user is logged in
+        # if user is logged in pop session to log user out
         session.pop("loggedIn")
-        # pop session to log user out
     return redirect("/")
     #redirect user back to root route
 

@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		{% block head %}
-		<title>{% block title %}Login{% endblock %}
+		{% block header %}
+		<title>{% block title %}Title{% endblock %} | AppleBananaSite
 		</title>
 		{% endblock %}
 	</head>
 	<body>
 		{% block content %}
-    <form action="/auth">
-      Enter a username:
-      <input type="text" name="username"><br>
-      Enter a password:
-      <input type="text" name="password"><br>
-      <input type="submit" name="sub1">
-    </form>
+		Template Page
 		{% endblock %}
 
 		{% block footer %}
-		<br>
-		Team Name: Apples Bananas <br>
-		Roster: Matthew Chan, Peihua Huang
+		<br><br><br><br><br>
+		© 2019 - Apples Bananas Inc. All rights reserved. <br>
+		Courtesy of: Matthew Chan, Peihua Huang
 		{% endblock %}
 	</body>
 </html>

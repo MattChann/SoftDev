@@ -1,0 +1,22 @@
+{% extends "template.html"%}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<H3>
+{% set msgs = get_flashed_messages() %}
+{% for msg in msgs %}
+  {{ msg }}
+{% endfor %}
+</H3>
+
+<form action="/auth">
+	Enter a username:
+	<input type="text" name="username"><br>
+	Enter a password:
+	<input type="text" name="password"><br>
+	<input type="submit" name="sub1">
+</form>
+{% endblock %}
