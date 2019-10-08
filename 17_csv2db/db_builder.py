@@ -15,6 +15,15 @@ c = db.cursor()               #facilitate db ops
 
 #==========================================================
 
+
+
+with open('courses.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+
+with open('students.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+
+
 command = ""          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 
