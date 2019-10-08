@@ -41,14 +41,14 @@ def authenticate():
             return redirect(url_for("welcome"))
             # redirect to welcome page
         else:
-            # if password is incorrect render error page and flash error message
+            # if password is incorrect flash error message on the login page
             flash("Error: incorrect password")
             return render_template("login.html")
     else:
-        # if username is incorrect render error page and flash error message
+        # if username is incorrect flash error message on the login page
         flash("Error: incorrect username")
         return render_template("login.html")
-    #if it fails for any other reason, return error page and error message
+    # if it fails for any other reason, flash error message on the login page
     flash("Error: bad juju")
     return render_template("login.html")
 
