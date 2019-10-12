@@ -18,6 +18,7 @@ c = db.cursor()               #facilitate db ops
 # Facilitates adding rows to the 'courses' table
 # IMPORTANT NOTE: sqlite3 executions CANNOT be run through a function
 
+# Returns the sqlite3 command to then be executed
 def addCourse(code, mark, studentId):
     return ("INSERT INTO courses VALUES('%s', %d, %d);" % (code, mark, studentId))
 
@@ -41,29 +42,29 @@ for bar in foo: # prints each entry as a tuple
 # Collects and organizes data from the database created by '../17_csv2db/db_builder.py' into 'stu_avg' table
 # IMPORTANT NOTE: sqlite3 executions will *OVERWRITE* one another in order; cannot store execution for later
 
-studentDict = dict()
-gradesDict = dict()
+studentDict = dict()    # dictionary to connect names to id's
+gradesDict = dict()     # dictionary to connect id's to a list of grades
 
-selectStudents = "SELECT name, id FROM students;"
+selectStudents = "SELECT name, id FROM students;"   # gets the names and id's from 'students' table
 studentData = c.execute(selectStudents)
 
 for name, studentId in studentData:
-    studentDict[studentId] = name
-    gradesDict[studentId] = list()
+    studentDict[studentId] = names  # enters key:value pairs in the format of id:name
+    gradesDict[studentId] = list()  # enters key:value pairs in the format of id:gradeList, an empty list for now
 
-selectGrades = "SELECT students.id, mark FROM courses, students WHERE courses.id = students.id;"
+selectGrades = "SELECT students.id, mark FROM courses, students WHERE courses.id = students.id;"    # gets the id's and grades from 'courses' table
 gradesData = c.execute(selectGrades)
 
 for studentId, grade in gradesData:
-    gradesDict[studentId].append(grade)
+    gradesDict[studentId].append(grade) # adds each grade to the respective gradeList based on id's
 
-# helper function to average grades
-def average(list):
-    return (math.fsum(list)/len(list))
+# Helper function to average grades in a list
+def average(gradesList):
+    return (math.fsum(gradesList)/len(gradesList))
 
 c.execute("CREATE TABLE stu_avg(name TEXT, id INTEGER, average REAL);")
 for studentId, gradesList in gradesDict.items():
-    c.execute("INSERT INTO stu_avg VALUES('%s', %d, %f);" % (studentDict[studentId], studentId, average(gradesList)))
+    c.execute("INSERT INTO stu_avg VALUES('%s', %d, %f);" % (studentDict[studentId], studentId, average(gradesList)))   # adds (name, id, average) as rows in 'stu_avg' table
 
 #==========================================================
 
