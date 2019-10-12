@@ -4,17 +4,16 @@
 # K#17: No Trouble
 # 2019-10-07
 
-import sqlite3   # enable control of an sqlite database
-import csv       # facilitate CSV I/O
+import sqlite3   #enable control of an sqlite database
+import csv       #facilitate CSV I/O
 
 
 DB_FILE="discobandit.db"
 
-db = sqlite3.connect(DB_FILE) # open if file exists, otherwise create
-c = db.cursor()               # facilitate db ops
+db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+c = db.cursor()               #facilitate db ops
 
 #==========================================================
-# Populates the database from csv files
 
 c.execute("CREATE TABLE courses(code TEXT, mark INTEGER, id INTEGER);")
 
@@ -31,17 +30,8 @@ with open('students.csv', newline='') as csvfile:
         c.execute("INSERT INTO students VALUES('%s', %d, %d);" % (row['name'], int(row['age']), int(row['id'])))
 
 #==========================================================
-# Tests printing SELECTed data
 
-q = "SELECT name, students.id, mark FROM courses, students WHERE courses.id = students.id;"
+db.commit() #save changes
+db.close()  #close database
 
-foo = c.execute(q)
-print(foo) # prints a cursor object
 
-for bar in foo:
-    print(bar)
-
-#==========================================================
-
-db.commit() # save changes
-db.close()  # close database
