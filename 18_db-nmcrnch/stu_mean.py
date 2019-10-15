@@ -49,7 +49,7 @@ selectStudents = "SELECT name, id FROM students;"   # gets the names and id's fr
 studentData = c.execute(selectStudents)
 
 for name, studentId in studentData:
-    studentDict[studentId] = names  # enters key:value pairs in the format of id:name
+    studentDict[studentId] = name  # enters key:value pairs in the format of id:name
     gradesDict[studentId] = list()  # enters key:value pairs in the format of id:gradeList, an empty list for now
 
 selectGrades = "SELECT students.id, mark FROM courses, students WHERE courses.id = students.id;"    # gets the id's and grades from 'courses' table
