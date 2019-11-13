@@ -15,10 +15,69 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
         <title>
-            Using APIs
+            Using RESTful APIs
         </title>
     </head>
-    <body style="text-align: center;">
-        {{name}}
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center fixed-top" style="margin-bottom:50px;">
+            <a class="navbar-brand" href="#">APIs</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#Rick and Morty API">Rick and Morty API</a>
+                </li>
+            </ul>  
+        </nav>
+        <div class="jumbotron text-center">
+            <h1 class="display-3">Usage of Various RESTful APIs</h1>
+        </div>
+        <div id="Rick and Morty API" class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src={{rick['image']}} class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{rick['name']}}</h5>
+                            <p class="card-text">
+                                Status: {{rick['status']}} <br>
+                                Gender: {{rick['gender']}} <br>
+                                Species: {{rick['species']}} <br>
+                                From: {{rick['origin']['name']}} <br>
+                                Location: {{rick['location']['name']}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src={{morty['image']}} class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{morty['name']}}</h5>
+                            <p class="card-text">
+                                Status: {{morty['status']}} <br>
+                                Gender: {{morty['gender']}} <br>
+                                Species: {{morty['species']}} <br>
+                                From: {{morty['origin']['name']}} <br>
+                                Location: {{morty['location']['name']}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src={{mrpb['image']}} class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{mrpb['name']}}</h5>
+                            <p class="card-text">
+                                Status: {{mrpb['status']}} <br>
+                                Gender: {{mrpb['gender']}} <br>
+                                Species: {{mrpb['species']}} <br>
+                                From: {{mrpb['origin']['name']}} <br>
+                                Location: {{mrpb['location']['name']}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

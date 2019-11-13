@@ -12,11 +12,16 @@ app = Flask(__name__)   #create instance of class Flask
 
 @app.route("/")
 def root():
-    u = urlopen("https://rickandmortyapi.com/api/character/1")
-    response = u.read()
-    data = json.loads(response)
+    rickURL = urlopen("https://rickandmortyapi.com/api/character/1")
+    rickData = json.loads(rickURL.read())
+    mortyURL = urlopen("https://rickandmortyapi.com/api/character/2")
+    mortyData = json.loads(mortyURL.read())
+    mrpbURL = urlopen("https://rickandmortyapi.com/api/character/244")
+    mrpbData = json.loads(mrpbURL.read())
     return render_template("index.html",
-                            name = data['name'])
+                            rick = rickData,
+                            morty = mortyData,
+                            mrpb = mrpbData)
 
 if __name__ == "__main__":
     app.debug = True
