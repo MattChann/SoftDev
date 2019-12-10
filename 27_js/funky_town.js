@@ -20,3 +20,9 @@ var gcd = (a, b) => {
     }
     return greatest;
 }
+
+var students = ["Dub Cao", "Coyote", "Matthew", "Blobfish"]
+
+var randomStudent = function() {
+
+}
