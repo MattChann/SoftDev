@@ -1,3 +1,10 @@
+/*
+Matthew Chan, William Cao
+SoftDev1 pd2
+K27 -- Sequential Progression
+2019-12-10
+*/
+
 var fibonacci = function(n) {
     if (n == 0) {
         return 0;
@@ -11,18 +18,18 @@ var fibonacci = function(n) {
 }
 
 var gcd = (a, b) => {
-    let greatest = 1;
-    let i;
-    for(i=1; i<=Math.min(a,b); i++) {
-        if ((a%i == 0) && (b%i == 0)) {
+    var greatest = 1;
+    for(var i = 1; i <= Math.min(a,b); i++) {
+        if ((a % i == 0) && (b % i == 0)) {
             greatest = i;
         }
     }
     return greatest;
 }
 
+
 var students = ["Dub Cao", "Coyote", "Matthew", "Blobfish"]
 
 var randomStudent = function() {
-
+    return students[parseInt(Math.random() * students.length)];
 }
