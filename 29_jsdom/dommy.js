@@ -1,3 +1,11 @@
+/*
+Mo Abedin, Matthew Chan
+SoftDev1 pd2
+K29 -- Sequential Progression III: Season of the Witch
+2019-12-12
+*/
+
+
 // Lo, what is this? Coult it be a VALUE-ADDED-KEY2SUCCESS?!?!
 
 var changeHeading = function(e) {
