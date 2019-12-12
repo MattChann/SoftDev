@@ -1,30 +1,66 @@
+/*
+Matthew Chan, Hilary Zen
+SoftDev1 pd2
+K28 -- Sequential Progression II: Electric Boogaloo
+2019-12-11
+*/
+
+document.getElementById("fibonacci").addEventListener('click', () => {
+    var fib = fibonacci(7);
+    console.log(fib);
+    document.getElementById("fibonacciOut").innerHTML = fib;
+});
+
 var fibonacci = function(n) {
-  if (n === 0) {
-    return 0;
-  } else if (n === 1) {
-    return 1;
-  } else {
-    return fibonacci(n - 1) + fibonacci(n - 2);
-  }
-}
-
-var gcd = function(a,b) {
-  var x;
-  var ans = 1;
-  for (x = 2; x <= Math.min(a,b); x++) {
-    if (a % x == 0 && b % x == 0) {
-      ans = x;
+    if (n === 0) {
+        return 0;
+    } else if (n === 1) {
+        return 1;
     }
-  }
-  return ans;
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-var randomButton = document.getElementById("random");
-randomButton.addEventListener("click", randomStudent);
+document.getElementById("gcd").addEventListener('click', () => {
+    var denominator = gcd(20,4);
+    console.log(denominator);
+    document.getElementById("gcdOut").innerHTML = denominator;
+});
+
+var gcd = function(a, b) {
+    var currGreatest = 1;
+    for (var i = 2; i <= Math.min(a, b); i++) {
+        if (a % i == 0 && b % i == 0) {
+            currGreatest = i;
+        }
+    }
+    return currGreatest;
+}
+
+document.getElementById("randomStudent").addEventListener('click', () => {
+    var student = randomStudent();
+    console.log(student);
+    document.getElementById("randomStudentOut").innerHTML = student;
+});
 
 var randomStudent = function() {
-  var names = ["Amy", "Bob", "Claire", "Dave"];
-  var index = Math.floor(Math.random() * names.length);
-  console.log("Console: " + names[index]);
-  return names[index];
+    var students = ["Dub Cao", "Coyote", "Matthew", "Blobfish"];
+    var index = Math.floor(Math.random() * students.length);
+    return students[index];
 }
+
+/*
+document.getElementById()
+document.getElementByTagName()
+document.getElementByClassName()
+
+.addEventListener()
+
+document.createElement()
+document.setAttribute()
+document.getAttribute()
+
+.remove()
+.innerHTML()
+.appendChild()
+
+*/
