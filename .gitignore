@@ -231,4 +231,7 @@ pip-selfcheck.json
 
 
 # Excluding API Keys
-/25_restrio/key.txt
+key.txt
+secret.txt
+key.json
+secret.json
