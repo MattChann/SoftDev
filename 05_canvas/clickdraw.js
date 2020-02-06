@@ -21,8 +21,8 @@ var changeMode = function(e){
 
 
 var draw = function(e){
-    var x = e.offsetX;
-    var y = e.offsetY;
+    var x = e.offsetX;  // gives the exact X coordinate of where the shape is drawn
+    var y = e.offsetY;  // gives the exact Y coordinate of where the shape is drawn
 
     if (isRect){
         ctx.fillStyle = "#0000FF";
@@ -30,7 +30,7 @@ var draw = function(e){
     }
     else {
         ctx.fillStyle = "#FF0000";
-        ctx.beginPath();
+        ctx.beginPath();    // starts to draw the circle/dot (like netlogo 'pd' or 'pen down')
         ctx.arc(x, y, 10, 0, 6.28);
         ctx.fill();
     }
