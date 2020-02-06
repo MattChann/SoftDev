@@ -1,7 +1,7 @@
 // Team M&M: Mo Abedin, Matthew Chan
 // SoftDev1 pd2
-// K04 -- I See a Red Door...
-// 2020-02-05
+// K05 -- ...and I want to Paint It Better
+// 2020-02-06
 
 
 var isRect = true;
@@ -21,8 +21,8 @@ var changeMode = function(e){
 
 
 var draw = function(e){
-    var x = e.clientX;
-    var y = e.clientY;
+    var x = e.offsetX;
+    var y = e.offsetY;
 
     if (isRect){
         ctx.fillStyle = "#0000FF";
