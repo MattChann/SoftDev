@@ -15,12 +15,9 @@ var radius = 0;
 var adjust = 1;
 
 var circle_animateStart = function(e) {
-    // Checks if already animating so clicking the animate button again won't break things
-    if (!isAnimating) {
-        stop();
-        window.requestAnimationFrame(circle_animate);
-        isAnimating = true;
-    }
+    stop();     // Allows users to change animations without having to click stop
+    window.requestAnimationFrame(circle_animate);
+    isAnimating = true;
 };
 
 var circle_animate = function(e) {
@@ -49,8 +46,10 @@ circle_animateButton.addEventListener("click", circle_animateStart);
 
 //==============================================================================
 
-var dvd_logo = new Image((canvas.width * 0.15), (canvas.height * 0.15));
+var dvd_logo = new Image(90, 60);
 dvd_logo.src = "https://raw.githubusercontent.com/stuy-softdev/notes-and-code19-20/master/smpl/200214f_js-canvas-anim/logo_dvd.jpg?token=ALKY4H5L3CDWQZ46ZGAS6E26J2JTK";
+// dvd_logo.width = 0.15 * Math.min(canvas.width, canvas.height);
+// dvd_logo.height = dvd_logo.width * (dvd_logo.naturalHeight / dvd_logo.naturalWidth);
 
 var x;
 var y;
@@ -58,22 +57,35 @@ var xAdjust;
 var yAdjust;
 
 var dvd_animateStart = function(e) {
-    // Checks if already animating so clicking the animate button again won't break things
-    if (!isAnimating) {
-        stop();
-        window.requestAnimationFrame(dvd_animate);
-        isAnimating = true;
+    stop();     // Allows users to change animations without having to click stop
+    window.requestAnimationFrame(dvd_animate);
+    isAnimating = true;
 
-        x = Math.round(Math.random() * (canvas.width - dvd_logo.width));
-        y = Math.round(Math.random() * (canvas.height - dvd_logo.height));
-    }
+    x = Math.round(Math.random() * (canvas.width - dvd_logo.width));
+    y = Math.round(Math.random() * (canvas.height - dvd_logo.height));
+    xAdjust = 1;
+    yAdjust = 1;
 };
 
 var dvd_animate = function(e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);   // Clears the canvas first
 
-    ctx.drawImage(dvd_logo, x, y, dvd_logo.width, dvd_logo.height);
+    if (x >= (canvas.width - dvd_logo.width)) {
+        xAdjust = -1;
+    }
+    if (y >= (canvas.height - dvd_logo.height)) {
+        yAdjust = -1;
+    }
+    if (x <= 0) {
+        xAdjust = 1;
+    }
+    if (y <= 0) {
+        yAdjust = 1;
+    }
+    x += xAdjust;
+    y += yAdjust;
 
+    ctx.drawImage(dvd_logo, x, y, dvd_logo.width, dvd_logo.height);
 
     animationId = window.requestAnimationFrame(dvd_animate);
 };
