@@ -41,13 +41,15 @@ def find_zipcode_and_grade(zipcode, grade):
 
 # Finds all restaurants in a specified zip code with a score below a specified threshold
 def find_zipcode_and_score(zipcode, score_threshold):
-    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.score": {$lt: score_threshold}})]
+    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.score": {"$lt": score_threshold}})]
 
 # (Clever Function)
 # Finds all restaurants in an approximate 1 mile by 1 mile square around you (using your IP Address location approximation)
-def find_near():
-    ip_address = socket.gethostbyname(socket.gethostname())
-    ip_data = json.loads(urlopen(f"http://ip-api.com/json/{ip_address}").read())
+def find_near(ip_address=None):
+    if ip_address == None:
+        ip_data = json.loads(urlopen(f"http://ip-api.com/json/").read())
+    else:
+        ip_data = json.loads(urlopen(f"http://ip-api.com/json/{ip_address}").read())
 
     ip_latitude = ip_data["lat"]
     ip_longitude = ip_data["lon"]
@@ -57,19 +59,19 @@ def find_near():
     # 1° longitude = cosine (latitude) * length of degree (miles) at equator
     MILE_IN_LONGITUDE = 1 / (cos(ip_latitude) * 69)
 
+    lat_lower = ip_latitude - MILE_IN_LATITUDE
+    lat_higher = ip_latitude + MILE_IN_LATITUDE
+    lon_lower = ip_longitude - MILE_IN_LONGITUDE
+    lon_higher = ip_longitude + MILE_IN_LONGITUDE
+
     return [restaurant for restaurant in restaurants.find({
         "coord[1]": 
-            {$lt: 
-                {$add: [ip_latitude, MILE_IN_LATITUDE]}, 
-            $gt 
-                {$subtract: [ip_latitude, MILE_IN_LATITUDE]}
-            }, 
+            {"$lt": lat_higher, 
+            "$gt": lat_lower}, 
         "coord[0]": 
-            {$lt: 
-                {$add: [ip_longitude, MILE_IN_LONGITUDE]}, 
-            $gt 
-                {$subtract: [ip_longitude, MILE_IN_LONGITUDE]}
-            }
+            {"$lt": lon_higher, 
+            "$gt": lon_lower}
     })]
 
-# return find_near()
+print(find_near())
+print(find_near('149.89.150.131'))
