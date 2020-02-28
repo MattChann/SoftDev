@@ -5,6 +5,7 @@
 
 import pymongo
 from pymongo import MongoClient
+from bson.json_util import loads
 
 client = MongoClient()
 db = client.buildings
@@ -12,7 +13,7 @@ restaurants = db.restaurants
 
 file = open("primer-dataset.json", 'r')
 documents = file.readlines()
-documents = list(map(lambda doc: eval(doc.strip().replace('$', '').replace('null', 'None')), documents))
+documents = list(map(lambda doc: loads(doc.strip()), documents))
 file.close()
 
 # print(documents)
@@ -20,15 +21,15 @@ file.close()
 result = restaurants.insert_many(documents)
 
 def find_borough(borough):
+	return [restaurant for restaurant in restaurants.find({"borough": f"{borough}"})]
+
+def find_zipcode(zipcode):
+	return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}"})]
+
+def find_zipcode_and_grade(zipcode, grade):
 	pass
 
-def find_zip_code(zip_code):
-	pass
-
-def find_zip_and_grade(zip_code, grade):
-	pass
-
-def find_zip_and_score(zip_code, score_threshold):
+def find_zipcode_and_score(zipcode, score_threshold):
 	pass
 
 def clever_find():
