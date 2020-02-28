@@ -37,11 +37,11 @@ def find_zipcode(zipcode):
 
 # Finds all restaurants in a specified zip code and with a specified grade
 def find_zipcode_and_grade(zipcode, grade):
-    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.grade": f"{grade}"})]
+    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.grade": grade})]
 
 # Finds all restaurants in a specified zip code with a score below a specified threshold
 def find_zipcode_and_score(zipcode, score_threshold):
-    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.score": {$lt: f"{score_threshold}"}})]
+    return [restaurant for restaurant in restaurants.find({"zipcode": f"{zipcode}", "grades.score": {$lt: score_threshold}})]
 
 # (Clever Function)
 # Finds all restaurants in an approximate 1 mile by 1 mile square around you (using your IP Address location approximation)
