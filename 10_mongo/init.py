@@ -6,6 +6,7 @@
 import pymongo
 from pymongo import MongoClient
 import json
+from bson.json_util import loads
 
 #=== POPULATING THE DATABASE =======
 client = MongoClient()
@@ -16,5 +17,7 @@ file = open("todayilearned.json", 'r')
 data = json.loads(file.read())
 file.close()
 
+documents = data['data']['children']
+
 # print(documents)
-result = reddit.insert_many(data)
+result = reddit.insert_many(documents)
