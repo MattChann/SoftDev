@@ -3,6 +3,12 @@
 # K10 -- Import/Export Bank
 # 2020-03-03
 
+'''
+Reddit TodayILearned Subreddit posts and details about those posts
+Link: https://www.reddit.com/r/todayilearned.json
+Import Mechanism: import as json then take the contents list and use each entry in that as a document in mongodb
+'''
+
 import pymongo
 from pymongo import MongoClient
 
