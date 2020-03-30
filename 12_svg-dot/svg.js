@@ -1,47 +1,44 @@
 var pic = document.getElementById("vimage");
+var btn = document.getElementById("clear");
+var l, c;
 
-var isFirstDot = true;
-var previousX;
-var previousY;
+var lastX = -1;
+var lastY;
 
-var drawDot = function(e){
-    var x = e.offsetX;
-    var y = e.offsetY;
+var clear = function() {
+  pic.innerHTML = '';
+  lastX = -1;
+}
 
-    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    dot.setAttribute("cx", x);
-    dot.setAttribute("cy", y);
-    dot.setAttribute("r", "10");
-    dot.setAttribute("fill", "#D8E4FF");
+var plot = function(e) {
+  if (lastX == -1) {
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+  }
 
-    pic.appendChild(dot);
+  l = document.createElementNS(
+  "http://www.w3.org/2000/svg", "line");
 
-    if (isFirstDot) {
-        isFirstDot = false;
-    }
-    else {
-        var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", previousX);
-        line.setAttribute("y1", previousY);
-        line.setAttribute("x2", x);
-        line.setAttribute("y2", y);
-        line.setAttribute("stroke", "#B3679B");
-
-        pic.appendChild(line);
-    }
-
-    previousX = x;
-    previousY = y;
-};
-
-pic.addEventListener("click", drawDot);
+  l.setAttribute("x1", lastX);
+  l.setAttribute("y1", lastY);
+  l.setAttribute("x2", e.offsetX);
+  l.setAttribute("y2", e.offsetY);
+  l.setAttribute("stroke", "black");
 
 
+  c = document.createElementNS(
+  "http://www.w3.org/2000/svg", "circle");
+  c.setAttribute("cx", e.offsetX);
+  c.setAttribute("cy", e.offsetY);
+  c.setAttribute("r", 20);
+  c.setAttribute("fill", "black");
 
-var clear = function(e){
-    pic.innerHTML = "";
-    isFirstDot = true;
-};
+  lastX = e.offsetX;
+  lastY = e.offsetY;
 
-var clearButton = document.getElementById("clear");
-clearButton.addEventListener("click", clear);
+  pic.appendChild(l);
+  pic.appendChild(c);
+}
+
+pic.addEventListener("click", plot);
+btn.addEventListener("click", clear);
