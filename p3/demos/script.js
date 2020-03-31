@@ -1,0 +1,1 @@
+gsap.to(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});

@@ -15,6 +15,13 @@
         <title>
             GSAP Guide
         </title>
+
+        <style>
+            img{
+                border: 1px solid;
+                border-radius: 1rem;
+            }
+        </style>
     </head>
 
     <body>
@@ -79,20 +86,239 @@
                     files you wish to include.
                 </p>
                 <pre><code>
-                    &lt;body&gt;
-                        ...
-                        
-                        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
-                        &lt;!-- Any other JavaScript files you wish to add --&gt;
-                    &lt;/body&gt;
+    &lt;body&gt;
+        ...
+
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+        &lt;!-- Any other JavaScript files you wish to add --&gt;
+    &lt;/body&gt;
                 </code></pre>
             </div><hr class="my-5">
 
             <div id="Tweening" class="container-fluid">
-                <h1>Tweening</h1><br>
+                <h1>What exactly is a "Tween"?</h1><br>
                 <p>
-                    Tweening
+                    In GSAP, a Tween is what does all the animation work and handles the property value changes.  All 
+                    you need to do is pass the target(s) (things you wish to animate), a duration, and the property or 
+                    properties you wish to animate.  The Tween will figure out what property values should be applied 
+                    at each point in time.
                 </p>
+                <p>
+                    Here are common methods for creating Tweens:
+                </p>
+                <ul>
+                    <li>
+                        <code>gsap.to()</code>
+                    </li>
+                    <li>
+                        <code>gsap.from()</code>
+                    </li>
+                </ul>
+                <p>
+                    Let's go through each of these to see how we can make simple animations.
+                </p><br>
+
+                <div class="container-fluid">
+                    <h2><code>gsap.to()</code></h2>
+                    <p>
+                        Let's first look at an example usage of <code>gsap.to()</code>.
+                    </p>
+                    <div class="container row">
+                        <div class="html col-md-7">
+                            <h3>HTML</h3>
+                            <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;
+                Intro to Tweens
+            &lt;/title&gt;
+
+            &lt;style&gt;
+                .box{
+                    background: orange;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 1rem;
+                    margin: auto;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="box"&gt;&lt;/div&gt;
+
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                            </code></pre>
+                        </div>
+                        <div class="javascript col-md-5">
+                            <h3>JavaScript</h3>
+                            <pre><code>
+    gsap.to(".box", {duration: 1, x: 300});
+                            </code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Initial Position</h3>
+                            <img class="col-md-12" src="images/0.png">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Final Position</h3>
+                            <img class="col-md-12" src="images/1.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Resulting HTML Upon Inspection</h3>
+                            <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;
+                Intro to Tweens
+            &lt;/title&gt;
+
+            &lt;style&gt;
+                .box{
+                    background: orange;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 1rem;
+                    margin: auto;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="box" style="transform: translate(300px, 0px);"&gt;&lt;/div&gt;
+
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <p>
+                        Looking at the example above, we can see that <code>gsap.to()</code> moves elements <b>TO</b> 
+                        another position or state (in this case moved in the x-direction +100 pixels).  As you can see, 
+                        we need to first pass the target(s), which is in this case is the class <code>box</code>.  If we 
+                        wanted to pass multiple targets, we would simply group them in a string and separate them with 
+                        commas: <code>".box, #another-element"</code>.  After passing the target, we then need to pass the 
+                        variables in the form of an object with property-value pairs we wish to animate to.
+                    </p>
+                    <p>
+                        Variable properties we can animate include:
+                    </p>
+                    <ul>
+                        <li><code>duration</code></li>
+                        <li><code>x</code></li>
+                        <li><code>y</code></li>
+                        <li><code>opacity</code></li>
+                        <li><code>scale</code></li>
+                        <li><code>rotation</code></li>
+                    </ul>
+                </div><br>
+
+                <div class="container-fluid">
+                    <h2><code>gsap.from()</code></h2>
+                    <p>
+                        Now here's an example usage of <code>gsap.from()</code>.
+                    </p>
+                    <div class="container row">
+                        <div class="html col-md-7">
+                            <h3>HTML</h3>
+                            <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;
+                Intro to Tweens
+            &lt;/title&gt;
+
+            &lt;style&gt;
+                .box{
+                    background: orange;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 1rem;
+                    margin: auto;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="box"&gt;&lt;/div&gt;
+
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                            </code></pre>
+                        </div>
+                        <div class="javascript col-md-5">
+                            <h3>JavaScript</h3>
+                            <pre><code>
+    gsap.from(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});
+                            </code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Initial Position</h3>
+                            <img class="col-md-12" src="images/2.png">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Final Position</h3>
+                            <img class="col-md-12" src="images/3.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Initial HTML Upon Inspection</h3>
+                            <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;
+                Intro to Tweens
+            &lt;/title&gt;
+
+            &lt;style&gt;
+                .box{
+                    background: orange;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 1rem;
+                    margin: auto;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="box" style="transform: translate(-100px, 300px) scale(0.5, 0.5);"&gt;&lt;/div&gt;
+
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                            </code></pre>
+                        </div>
+                    </div>
+
+                    <p>
+                        Similar to <code>gsap.to()</code>, <code>gsap.from()</code> animates elements <b>FROM</b> 
+                        another position or state (in this case moved from -100 pixels in the x-direction, +300 
+                        pixels in the y-direction, and a scale of 0.5).  Passing the targets and variables (as an 
+                        object) works the same as with <code>gsap.to()</code> and we can also use the same properties 
+                        listed above with <code>gsap.from()</code>.
+                    </p>
+                </div>
             </div><hr class="my-5">
 
             <div id="Easing" class="container-fluid">
