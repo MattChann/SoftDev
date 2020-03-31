@@ -44,12 +44,6 @@
                     <a class="nav-link" href="#Staggering">Staggering</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Callbacks">Callbacks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Animation Controls">Animation Controls</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#Timeline">Timeline</a>
                 </li>
             </ul>
@@ -213,7 +207,7 @@
                         variables in the form of an object with property-value pairs we wish to animate to.
                     </p>
                     <p>
-                        Variable properties we can animate include:
+                        Common variable properties we can animate include (BUT ARE NOT LIMITED TO):
                     </p>
                     <ul>
                         <li><code>duration</code></li>
@@ -352,29 +346,91 @@
             <div id="Staggering" class="container-fluid">
                 <h1>Staggering</h1><br>
                 <p>
-                    Staggering
-                </p>
-            </div><hr class="my-5">
-
-            <div id="Callbacks" class="container-fluid">
-                <h1>Callbacks</h1><br>
-                <p>
-                    Callbacks
-                </p>
-            </div><hr class="my-5">
-
-            <div id="Animation Controls" class="container-fluid">
-                <h1>Animation Controls</h1><br>
-                <p>
-                    Animation Controls
+                    Staggers are a way to animate groups of objects extremely easily.  The easiest way to do this is by 
+                    adding the <code>stagger:&lt;time_offset</code> property-value pair to our variables object we pass 
+                    to a Tween.  We can specify an offset amount between the start of each individual object's animation.  
+                    While this is only going over the basics, staggering also can allow us to create 2d and 3d animations 
+                    and play around with the ordering of animation of individual objects.
                 </p>
             </div><hr class="my-5">
 
             <div id="Timeline" class="container-fluid">
                 <h1>Timeline</h1><br>
                 <p>
-                    Timeline
+                    A GSAP Timeline allows us to order the sequence of animations and can be thought of as basically a 
+                    container for Tweens and even other timelines.  Lets look at the example code below to see how we can 
+                    use timelines.
                 </p>
+
+                <div class="container row">
+                    <div class="html col-md-7">
+                        <h3>HTML</h3>
+                        <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;
+                Intro to Tweens
+            &lt;/title&gt;
+
+            &lt;style&gt;
+                .box{
+                    background: orange;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 1rem;
+                    margin: auto;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;div class="box"&gt;&lt;/div&gt;
+
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                        </code></pre>
+                    </div>
+                    <div class="javascript col-md-5">
+                        <h3>JavaScript</h3>
+                        <pre><code>
+    var tl = gsap.timeline();
+
+    tl.from(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});
+    tl.to(".box", {duration: 1, x: 300});
+    tl.to(".box", {duration: 1, y: 500, opacity: "50%", scale: 3});
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h3>Initial Position</h3>
+                        <img class="img-responsive" width="100%" src="images/2.png">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Second Position</h3>
+                        <img class="img-responsive" width="100%" src="images/3.png">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Final Position</h3>
+                        <img class="img-responsive" width="100%" src="images/3.png">
+                    </div>
+                </div><br>
+
+                <p>
+                    To create a timeline, we create a <code>gsap.timeline()</code> and assign it to a 
+                    variable.  We can then use methods of that timeline instead of using <code>gsap.to()</code> 
+                    for example, it becomes <code>tl.to()</code>.  Tweens are by default added to the end of 
+                    the timeline so the animations happen in the order they are added in the example above.
+                </p>
+            </div><hr class="my-5">
+
+            <div class="container-fluid">
+                <div class="jumbotron text-center">
+                    <h3>Thank you for reading this basic guide to using GSAP!  If you would like to learn more, check out GreenSock's Getting Started Page (<a href="https://greensock.com/get-started">https://greensock.com/get-started</a>) and also their official documentation (<a href="https://greensock.com/docs/v3">https://greensock.com/docs/v3</a>) where you can see in-depth demos and a bunch of advanced features.</h3>
+                </div>
             </div>
         </div>
     </body>
