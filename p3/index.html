@@ -164,11 +164,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3>Initial Position</h3>
-                            <img class="col-md-12" src="images/0.png">
+                            <img class="img-responsive" width="100%" src="images/0.png">
                         </div>
                         <div class="col-md-6">
                             <h3>Final Position</h3>
-                            <img class="col-md-12" src="images/1.png">
+                            <img class="img-responsive" width="100%" src="images/1.png">
                         </div>
                     </div>
 
@@ -271,11 +271,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3>Initial Position</h3>
-                            <img class="col-md-12" src="images/2.png">
+                            <img class="img-responsive" width="100%" src="images/2.png">
                         </div>
                         <div class="col-md-6">
                             <h3>Final Position</h3>
-                            <img class="col-md-12" src="images/3.png">
+                            <img class="img-responsive" width="100%" src="images/3.png">
                         </div>
                     </div>
 
@@ -324,8 +324,29 @@
             <div id="Easing" class="container-fluid">
                 <h1>Easing</h1><br>
                 <p>
-                    Easing
+                    Eases are the main way to change the timing of Tweens.  What this means is that we can effectively 
+                    change how our animations might feel as you will see below.  To change the ease used for an animation, 
+                    we can add the <code>ease:"&lt;insert_desired_ease&gt;"</code> property to our variables object we pass 
+                    to Tweens.
                 </p>
+                <p>
+                    While it is fairly hard to show the effect eases have in a static format, we can use GreenSock's Ease 
+                    Visualizer (found at <a href="https://greensock.com/docs/v3/Eases">https://greensock.com/docs/v3/Eases</a>) 
+                    to see these eases in a graphical format.  GSAP's default ease is <code>"power1.out"</code>, but another 
+                    ease that I really love using is the <code>"elastic.out"</code> ease which adds some bouncyness to your 
+                    animations.  By default GSAP uses the <code>"&lt;ease&gt;.out"</code> version of eases so using the 
+                    <code>"elastic"</code> ease would be the same as specifying <code>"elastic.out"</code>.
+                </p><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><code>"power1"</code> Ease Visualization</h2>
+                        <img class="img-responsive" width="100%" src="images/4.png">
+                    </div>
+                    <div class="col-md-6">
+                        <h2><code>"elastic"</code> Ease Visualization</h2>
+                        <img class="img-responsive" width="100%" src="images/5.png">
+                    </div>
+                </div>
             </div><hr class="my-5">
 
             <div id="Staggering" class="container-fluid">
