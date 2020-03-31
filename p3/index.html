@@ -17,8 +17,63 @@
         </title>
 
         <style>
+            body{
+                background-color: #D1F1FF;
+                font-size: large;
+            }
+
+            .jumbotron{
+                background-color: #FFBAE1;
+                border-radius: 1rem;
+            }
+
+            .container-fluid > h1{
+                background-color: #474747;
+                border: 1.25rem solid #474747;
+                border-radius: 0.5rem;
+                color: white;
+            }
+
+            p code, ul code, h2 > code{
+                font-size: large;
+                background-color: #003777;
+                border: 0.3rem solid #003777;
+                border-radius: 0.5rem;
+                color: white;
+            }
+
+            h2 > code{
+                font-size: inherit;
+            }
+
+            .header{
+                background-color: #727272;
+                border: 0.3rem solid #727272;
+                border-radius: 0.5rem;
+                color: white;
+            }
+
+            .html, .javascript{
+                background-color: #FFBAE1;
+                border: 0.75rem solid #FFBAE1;
+                border-radius: 1rem;
+            }
+
+            pre{
+                font-size: large;
+                background-color: #003777;
+                border: 0.3rem solid #003777;
+                border-radius: 0.5rem;
+                color: white;
+            }
+
+            .page{
+                background-color: #C1C1C1;
+                border: 1rem solid #C1C1C1;
+                border-radius: 1rem;
+            }
+
             img{
-                border: 1px solid;
                 border-radius: 1rem;
             }
         </style>
@@ -118,9 +173,10 @@
                         Let's first look at an example usage of <code>gsap.to()</code>.
                     </p>
                     <div class="container row">
-                        <div class="html col-md-7">
-                            <h3>HTML</h3>
-                            <pre><code>
+                        <div class="col-md-10 mb-3">
+                            <div class="html col-md-12">
+                                <h3 class="header">HTML</h3>
+                                <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -145,31 +201,39 @@
             &lt;script src="script.js"&gt;&lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
-                            </code></pre>
+                                </code></pre>
+                            </div>
                         </div>
-                        <div class="javascript col-md-5">
-                            <h3>JavaScript</h3>
-                            <pre><code>
+                        <div class="col-md-5 mb-3">
+                            <div class="javascript col-md-12">
+                                <h3 class="header">JavaScript</h3>
+                                <pre><code>
     gsap.to(".box", {duration: 1, x: 300});
-                            </code></pre>
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6">
-                            <h3>Initial Position</h3>
-                            <img class="img-responsive" width="100%" src="images/0.png">
+                        <div class="col-md-6 mb-3">
+                            <div class="page col-md-12">
+                                <h3 class="header">Initial Position</h3>
+                                <img class="img-responsive" width="100%" src="images/0.png">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h3>Final Position</h3>
-                            <img class="img-responsive" width="100%" src="images/1.png">
+                        <div class="col-md-6 mb-3">
+                            <div class="page col-md-12">
+                                <h3 class="header">Final Position</h3>
+                                <img class="img-responsive" width="100%" src="images/1.png">
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <h3>Resulting HTML Upon Inspection</h3>
-                            <pre><code>
+                        <div class="col-md-12 mb-3">
+                            <div class="html col-md-12">
+                                <h3 class="header">Resulting HTML Upon Inspection</h3>
+                                <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -194,7 +258,8 @@
             &lt;script src="script.js"&gt;&lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
-                            </code></pre>
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
 
@@ -225,9 +290,10 @@
                         Now here's an example usage of <code>gsap.from()</code>.
                     </p>
                     <div class="container row">
-                        <div class="html col-md-7">
-                            <h3>HTML</h3>
-                            <pre><code>
+                        <div class="col-md-10 mb-3">
+                            <div class="html col-md-12">
+                                <h3 class="header">HTML</h3>
+                                <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -252,31 +318,39 @@
             &lt;script src="script.js"&gt;&lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
-                            </code></pre>
+                                </code></pre>
+                            </div>
                         </div>
-                        <div class="javascript col-md-5">
-                            <h3>JavaScript</h3>
-                            <pre><code>
-    gsap.from(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});
-                            </code></pre>
+                        <div class="col-md-8 mb-3">
+                            <div class="javascript col-md-12">
+                                <h3 class="header">JavaScript</h3>
+                                <pre><code>
+        gsap.from(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6">
-                            <h3>Initial Position</h3>
-                            <img class="img-responsive" width="100%" src="images/2.png">
+                        <div class="col-md-6 mb-3">
+                            <div class="page col-md-12">
+                                <h3 class="header">Initial Position</h3>
+                                <img class="img-responsive" width="100%" src="images/2.png">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h3>Final Position</h3>
-                            <img class="img-responsive" width="100%" src="images/0.png">
+                        <div class="col-md-6 mb-3">
+                            <div class="page col-md-12">
+                                <h3 class="header">Final Position</h3>
+                                <img class="img-responsive" width="100%" src="images/0.png">
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <h3>Initial HTML Upon Inspection</h3>
-                            <pre><code>
+                        <div class="col-md-12 mb-3">
+                            <div class="html col-md-12">
+                                <h3 class="header">Initial HTML Upon Inspection</h3>
+                                <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -301,7 +375,8 @@
             &lt;script src="script.js"&gt;&lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
-                            </code></pre>
+                                </code></pre>
+                            </div>
                         </div>
                     </div>
 
@@ -332,13 +407,17 @@
                     <code>"elastic"</code> ease would be the same as specifying <code>"elastic.out"</code>.
                 </p><br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <h2><code>"power1"</code> Ease Visualization</h2>
-                        <img class="img-responsive" width="100%" src="images/3.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="col-md-12">
+                            <h2><code>"power1"</code> Ease Visualization</h2>
+                            <img class="img-responsive" width="100%" src="images/3.png">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h2><code>"elastic"</code> Ease Visualization</h2>
-                        <img class="img-responsive" width="100%" src="images/4.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="col-md-12">
+                            <h2><code>"elastic"</code> Ease Visualization</h2>
+                            <img class="img-responsive" width="100%" src="images/4.png">
+                        </div>
                     </div>
                 </div>
             </div><hr class="my-5">
@@ -347,7 +426,7 @@
                 <h1>Staggering</h1><br>
                 <p>
                     Staggers are a way to animate groups of objects extremely easily.  The easiest way to do this is by 
-                    adding the <code>stagger:&lt;time_offset</code> property-value pair to our variables object we pass 
+                    adding the <code>stagger:&lt;time_offset&gt;</code> property-value pair to our variables object we pass 
                     to a Tween.  We can specify an offset amount between the start of each individual object's animation.  
                     While this is only going over the basics, staggering also can allow us to create 2d and 3d animations 
                     and play around with the ordering of animation of individual objects.
@@ -363,9 +442,10 @@
                 </p>
 
                 <div class="container row">
-                    <div class="html col-md-7">
-                        <h3>HTML</h3>
-                        <pre><code>
+                    <div class="col-md-10 mb-3">
+                        <div class="html col-md-12">
+                            <h3 class="header">HTML</h3>
+                            <pre><code>
     &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -390,36 +470,47 @@
             &lt;script src="script.js"&gt;&lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
-                        </code></pre>
+                            </code></pre>
+                        </div>
                     </div>
-                    <div class="javascript col-md-5">
-                        <h3>JavaScript</h3>
-                        <pre><code>
+                    <div class="col-md-8 mb-3">
+                        <div class="javascript col-md-12">
+                            <h3 class="header">JavaScript</h3>
+                            <pre><code>
     var tl = gsap.timeline();
 
     tl.from(".box", {duration: 1, x: "-100", y: 300, scale: 0.5});
     tl.to(".box", {duration: 1, x: 300});
     tl.to(".box", {duration: 1, y: 500, opacity: "50%", scale: 3});
-                        </code></pre>
+                            </code></pre>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <h3>Initial Position</h3>
-                        <img class="img-responsive" width="100%" src="images/2.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="page col-md-12">
+                            <h3 class="header">Initial Position</h3>
+                            <img class="img-responsive" width="100%" src="images/2.png">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h3>Second Position</h3>
-                        <img class="img-responsive" width="100%" src="images/0.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="page col-md-12">
+                            <h3 class="header">Second Position</h3>
+                            <img class="img-responsive" width="100%" src="images/0.png">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h3>Third Position</h3>
-                        <img class="img-responsive" width="100%" src="images/1.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="page col-md-12">
+                            <h3 class="header">Third Position</h3>
+                            <img class="img-responsive" width="100%" src="images/1.png">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <h3>Final Position</h3>
-                        <img class="img-responsive" width="100%" src="images/5.png">
+                    <div class="col-md-6 mb-3">
+                        <div class="page col-md-12">
+                            <h3 class="header">Final Position</h3>
+                            <img class="img-responsive" width="100%" src="images/5.png">
+                        </div>
                     </div>
                 </div><br>
 
