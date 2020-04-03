@@ -1,0 +1,21 @@
+Team Silly Goobers: David Lupea and Matthew Chan
+SoftDev1 pd2
+K16 -- Dabbling in D3
+2020-04-02
+
+
+
+00 Notes
+---------
+ - Is there a way to change the bars to be vertical?
+ - The first two bars seem to be touching whereas the others do not.
+ - Can the placement of numbers be changed to be located elsewhere?
+ - All the bars need to be manually set to a certain width.
+
+
+
+01 Notes
+---------
+ - The graph looks the exact same as expected.
+ - The functions provided by d3 and the objects used like the d3 object and result of .select seem to be pretty intuitive (at least by the naming).
+ - Perhaps this kind of data manipulation can be used for other types of graphs (obviously I guess) because these functions can be modified to append different DOM elements other than the div's of the bar graph.
