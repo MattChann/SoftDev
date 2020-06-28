@@ -1,0 +1,15 @@
+[submodule "projects/00-Smallpox_Stories"]
+	path = projects/00-Smallpox_Stories
+	url = https://github.com/MattChann/softdev-p00.git
+[submodule "projects/01-Sportsball"]
+	path = projects/01-Sportsball
+	url = https://github.com/MattChann/OKzoomers_bhuiyanS-chanM-friedH-olinJ.git
+[submodule "projects/02-RYthEM"]
+	path = projects/02-RYthEM
+	url = https://github.com/MattChann/subtleAsianCoders_luoY-chanM-lauE-leeR.git
+[submodule "projects/04-Kairosclerosis"]
+	path = projects/04-Kairosclerosis
+	url = https://github.com/MattChann/Kudoclasm.git
+[submodule "projects/05-Tanks"]
+	path = projects/05-Tanks
+	url = https://github.com/MattChann/flashover__kcai00-mchan00-dlupea00.git
